@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # New Product Profit Prediction
 
 **Assignment 2 — AI Spreadsheets and Python Programming**
@@ -102,3 +103,6 @@ the actual cost/price/volume relationships in `data.csv`.
 
 *(Add screenshots of the running app here before submission — e.g. the input
 form and a sample prediction result.)*
+=======
+# AISPP-Project
+>>>>>>> d519d08f2fde24cc836e1a558a8582780a0bb0f5
