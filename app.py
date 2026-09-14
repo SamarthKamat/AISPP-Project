@@ -43,6 +43,12 @@ st.markdown(flat_html("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
+    html, body, [data-testid="stAppViewContainer"], [data-testid="stApp"], [data-testid="block-container"], [data-testid="stHeader"] {
+      font-size: 17.5px !important;
+      line-height: 1.58;
+      -webkit-text-size-adjust: 100%;
+    }
+
     * {
       font-family: 'Inter', 'Poppins', 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
       -webkit-font-smoothing: antialiased;
@@ -71,21 +77,18 @@ st.markdown(flat_html("""
       pointer-events: none;
       z-index: 0;
       background-image:
-        radial-gradient(circle at 22% 28%, rgba(251, 191, 36, 0.07) 0%, transparent 42%),
-        radial-gradient(circle at 78% 72%, rgba(168, 85, 247, 0.06) 0%, transparent 42%),
-        linear-gradient(rgba(251, 191, 36, 0.032) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(167, 139, 250, 0.032) 1px, transparent 1px);
-      background-size: auto, auto, 58px 58px, 58px 58px;
-      animation: auroraDrift 20s ease-in-out infinite alternate, gridDrift 26s linear infinite;
+        radial-gradient(circle at 22% 28%, rgba(251, 191, 36, 0.085) 0%, transparent 42%),
+        radial-gradient(circle at 78% 72%, rgba(168, 85, 247, 0.075) 0%, transparent 42%),
+        radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.04) 0%, transparent 60%),
+        radial-gradient(circle at 8% 50%, rgba(251, 113, 133, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 92% 50%, rgba(34, 211, 238, 0.05) 0%, transparent 40%);
+      background-size: auto;
+      animation: auroraDrift 20s ease-in-out infinite alternate;
     }
     @keyframes auroraDrift {
       0% { transform: translate(0, 0) scale(1); }
       50% { transform: translate(2.5%, -1.5%) scale(1.05); }
       100% { transform: translate(-1.5%, 1.5%) scale(1.03); }
-    }
-    @keyframes gridDrift {
-      0% { background-position: 0 0, 0 0, 0 0, 0 0; }
-      100% { background-position: 0 0, 0 0, 58px 58px, 58px 58px; }
     }
 
     .stApp::after {
@@ -95,28 +98,44 @@ st.markdown(flat_html("""
       pointer-events: none;
       z-index: 0;
       background-image:
-        radial-gradient(2.2px 2.2px at 10% 15%, rgba(253, 224, 71, 0.78), transparent),
-        radial-gradient(1.6px 1.6px at 26% 40%, rgba(196, 181, 253, 0.6), transparent),
-        radial-gradient(2px 2px at 42% 10%, rgba(251, 146, 60, 0.55), transparent),
-        radial-gradient(1.8px 1.8px at 60% 56%, rgba(167, 139, 250, 0.65), transparent),
-        radial-gradient(2.2px 2.2px at 76% 20%, rgba(244, 114, 182, 0.5), transparent),
-        radial-gradient(1.6px 1.6px at 88% 66%, rgba(34, 211, 238, 0.6), transparent),
-        radial-gradient(2px 2px at 34% 80%, rgba(253, 186, 116, 0.55), transparent),
-        radial-gradient(1.8px 1.8px at 56% 90%, rgba(129, 140, 248, 0.55), transparent),
-        radial-gradient(1.6px 1.6px at 6% 58%, rgba(249, 168, 212, 0.5), transparent),
-        radial-gradient(2px 2px at 72% 86%, rgba(134, 239, 172, 0.55), transparent),
-        radial-gradient(1.6px 1.6px at 18% 70%, rgba(165, 180, 252, 0.5), transparent),
-        radial-gradient(2px 2px at 50% 35%, rgba(253, 224, 71, 0.45), transparent),
-        radial-gradient(1.8px 1.8px at 82% 45%, rgba(240, 171, 252, 0.55), transparent),
-        radial-gradient(1.6px 1.6px at 30% 5%, rgba(192, 132, 252, 0.5), transparent),
-        radial-gradient(2px 2px at 68% 4%, rgba(251, 146, 60, 0.48), transparent);
+        radial-gradient(2.4px 2.4px at 10% 15%, rgba(253, 224, 71, 0.82), transparent),
+        radial-gradient(1.8px 1.8px at 26% 40%, rgba(196, 181, 253, 0.64), transparent),
+        radial-gradient(2.2px 2.2px at 42% 10%, rgba(251, 146, 60, 0.58), transparent),
+        radial-gradient(2px 2px at 60% 56%, rgba(167, 139, 250, 0.68), transparent),
+        radial-gradient(2.4px 2.4px at 76% 20%, rgba(244, 114, 182, 0.54), transparent),
+        radial-gradient(1.8px 1.8px at 88% 66%, rgba(34, 211, 238, 0.64), transparent),
+        radial-gradient(2.2px 2.2px at 34% 80%, rgba(253, 186, 116, 0.58), transparent),
+        radial-gradient(2px 2px at 56% 90%, rgba(129, 140, 248, 0.58), transparent),
+        radial-gradient(1.8px 1.8px at 6% 58%, rgba(249, 168, 212, 0.54), transparent),
+        radial-gradient(2.2px 2.2px at 72% 86%, rgba(134, 239, 172, 0.58), transparent),
+        radial-gradient(1.8px 1.8px at 18% 70%, rgba(165, 180, 252, 0.54), transparent),
+        radial-gradient(2.2px 2.2px at 50% 35%, rgba(253, 224, 71, 0.48), transparent),
+        radial-gradient(2px 2px at 82% 45%, rgba(240, 171, 252, 0.58), transparent),
+        radial-gradient(1.8px 1.8px at 30% 5%, rgba(192, 132, 252, 0.54), transparent),
+        radial-gradient(2.2px 2.2px at 68% 4%, rgba(251, 146, 60, 0.52), transparent),
+        radial-gradient(1.5px 1.5px at 15% 88%, rgba(251, 191, 36, 0.52), transparent),
+        radial-gradient(1.5px 1.5px at 46% 68%, rgba(236, 72, 153, 0.5), transparent),
+        radial-gradient(1.5px 1.5px at 94% 12%, rgba(99, 102, 241, 0.55), transparent),
+        radial-gradient(1.4px 1.4px at 38% 48%, rgba(34, 211, 238, 0.48), transparent),
+        radial-gradient(1.4px 1.4px at 66% 74%, rgba(251, 113, 133, 0.48), transparent),
+        radial-gradient(1.3px 1.3px at 22% 22%, rgba(168, 85, 247, 0.45), transparent),
+        radial-gradient(1.3px 1.3px at 86% 34%, rgba(16, 185, 129, 0.5), transparent);
       background-size: 100% 100%;
       animation: starTwinkle 7s ease-in-out infinite;
-      opacity: 0.85;
+      opacity: 0.92;
     }
     @keyframes starTwinkle {
-      0%, 100% { opacity: 0.5; }
-      50% { opacity: 1; }
+      0%, 100% { opacity: 0.55; filter: brightness(0.85); }
+      50% { opacity: 1; filter: brightness(1.15); }
+    }
+
+    .stApp > [data-testid="stAppViewContainer"]::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      background: radial-gradient(ellipse at center, transparent 45%, rgba(5, 2, 14, 0.55) 100%);
     }
 
     .floating-orb {
@@ -124,37 +143,37 @@ st.markdown(flat_html("""
       border-radius: 50%;
       pointer-events: none;
       z-index: 1;
-      filter: blur(90px);
-      opacity: 0.6;
+      filter: blur(95px);
+      opacity: 0.68;
     }
     .orb-1 {
-      width: 560px; height: 560px;
-      background: radial-gradient(circle, rgba(251, 191, 36, 0.5) 0%, rgba(139, 92, 246, 0.38) 45%, transparent 74%);
-      top: -20%; left: -12%;
+      width: 620px; height: 620px;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.56) 0%, rgba(236, 72, 153, 0.36) 32%, rgba(139, 92, 246, 0.42) 58%, transparent 78%);
+      top: -24%; left: -14%;
       animation: floatOrb1 22s ease-in-out infinite;
     }
     .orb-2 {
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(236, 72, 153, 0.5) 0%, rgba(251, 146, 60, 0.3) 48%, rgba(139, 92, 246, 0.2) 70%, transparent 76%);
-      top: 22%; right: -14%;
+      width: 560px; height: 560px;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.56) 0%, rgba(251, 146, 60, 0.36) 38%, rgba(139, 92, 246, 0.28) 66%, transparent 80%);
+      top: 20%; right: -16%;
       animation: floatOrb2 26s ease-in-out infinite;
     }
     .orb-3 {
-      width: 460px; height: 460px;
-      background: radial-gradient(circle, rgba(34, 211, 238, 0.44) 0%, rgba(99, 102, 241, 0.34) 52%, transparent 76%);
-      bottom: -18%; left: 26%;
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, rgba(34, 211, 238, 0.5) 0%, rgba(99, 102, 241, 0.4) 38%, rgba(168, 85, 247, 0.22) 62%, transparent 80%);
+      bottom: -22%; left: 22%;
       animation: floatOrb3 30s ease-in-out infinite;
     }
     .orb-4 {
-      width: 420px; height: 420px;
-      background: radial-gradient(circle, rgba(251, 191, 36, 0.36) 0%, rgba(251, 113, 133, 0.28) 52%, rgba(168, 85, 247, 0.16) 74%, transparent 78%);
-      top: 56%; left: -10%;
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(251, 191, 36, 0.42) 0%, rgba(251, 113, 133, 0.36) 36%, rgba(168, 85, 247, 0.24) 66%, transparent 82%);
+      top: 54%; left: -12%;
       animation: floatOrb4 28s ease-in-out infinite;
     }
     .orb-5 {
-      width: 360px; height: 360px;
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.28) 0%, rgba(34, 211, 238, 0.22) 50%, rgba(129, 140, 248, 0.18) 72%, transparent 78%);
-      top: 68%; right: -6%;
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.34) 0%, rgba(34, 211, 238, 0.3) 38%, rgba(129, 140, 248, 0.24) 66%, transparent 82%);
+      top: 66%; right: -8%;
       animation: floatOrb5 32s ease-in-out infinite;
     }
     @keyframes floatOrb1 {
@@ -402,7 +421,7 @@ st.markdown(flat_html("""
       60% { transform: translateX(140%); }
     }
     .brand-logo {
-      font-size: 2.2rem; line-height: 1; margin: 0;
+      font-size: 2.6rem; line-height: 1; margin: 0;
       filter: drop-shadow(0 3px 12px rgba(0,0,0,0.45));
       animation: logoFloat 4.5s ease-in-out infinite;
     }
@@ -414,7 +433,7 @@ st.markdown(flat_html("""
     .brand-title-main {
       font-family: 'Space Grotesk', 'Poppins', sans-serif;
       font-weight: 800;
-      font-size: 2.0rem;
+      font-size: 2.4rem;
       line-height: 1;
       margin: 0;
       letter-spacing: -0.045em;
@@ -441,7 +460,7 @@ st.markdown(flat_html("""
       50% { background-position: 100% 50%; }
     }
     .brand-tagline-main {
-      font-size: 0.92rem;
+      font-size: 1.08rem;
       color: rgba(221, 214, 254, 0.97);
       font-weight: 600;
       letter-spacing: 0.05em;
@@ -452,7 +471,7 @@ st.markdown(flat_html("""
       display: inline-flex;
       align-items: center;
       gap: 0.65rem;
-      padding: 0.62rem 1.4rem;
+      padding: 0.72rem 1.55rem;
       background:
         linear-gradient(135deg,
           rgba(139, 92, 246, 0.22) 0%,
@@ -460,8 +479,8 @@ st.markdown(flat_html("""
           rgba(236, 72, 153, 0.16) 100%);
       border: 1.5px solid rgba(251, 191, 36, 0.3);
       border-radius: 999px;
-      font-size: 0.74rem;
-      font-weight: 700;
+      font-size: 0.86rem;
+      font-weight: 800;
       color: #fde68a;
       letter-spacing: 0.16em;
       text-transform: uppercase;
@@ -500,7 +519,7 @@ st.markdown(flat_html("""
       display: inline-flex;
       align-items: center;
       gap: 1.1rem;
-      font-size: 0.8rem;
+      font-size: 0.95rem;
       color: rgba(221, 214, 254, 0.93);
       font-weight: 600;
     }
@@ -511,7 +530,7 @@ st.markdown(flat_html("""
       z-index: 2;
       font-family: 'Space Grotesk', 'Poppins', sans-serif;
       font-weight: 800;
-      font-size: 2.8rem;
+      font-size: 3.4rem;
       line-height: 1.05;
       margin: 1.1rem 0 0.85rem 0;
       letter-spacing: -0.05em;
@@ -558,8 +577,8 @@ st.markdown(flat_html("""
     .hero-sub {
       position: relative;
       z-index: 2;
-      font-size: 0.98rem;
-      line-height: 1.65;
+      font-size: 1.16rem;
+      line-height: 1.7;
       color: rgba(226, 232, 240, 0.95);
       max-width: 840px;
       font-weight: 400;
@@ -1029,12 +1048,12 @@ st.markdown(flat_html("""
     label, .stSelectbox label p, .stNumberInput label, .stSlider label p {
       color: #e0e7ff !important;
       font-weight: 600 !important;
-      font-size: 0.87rem !important;
-      margin-bottom: 0.5rem !important;
+      font-size: 1.02rem !important;
+      margin-bottom: 0.55rem !important;
       letter-spacing: 0.018em;
     }
     .stSelectbox label, .stNumberInput label, .stSlider label {
-      margin-bottom: 0.6rem !important;
+      margin-bottom: 0.65rem !important;
       padding-bottom: 0 !important;
     }
 
@@ -1047,12 +1066,12 @@ st.markdown(flat_html("""
       border: 1.5px solid rgba(251, 191, 36, 0.11) !important;
       border-radius: 12px !important;
       color: #f1f5f9 !important;
-      font-weight: 500 !important;
-      font-size: 0.88rem !important;
-      min-height: 44px;
+      font-weight: 600 !important;
+      font-size: 1.05rem !important;
+      min-height: 50px;
       transition: all 0.32s cubic-bezier(0.22, 1, 0.36, 1) !important;
-      padding-left: 0.9rem !important;
-      padding-right: 0.9rem !important;
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
       box-shadow:
         inset 0 2px 5px rgba(0, 0, 0, 0.4),
         0 0 0 0 rgba(251, 191, 36, 0) !important;
@@ -1090,8 +1109,9 @@ st.markdown(flat_html("""
     }
     [data-baseweb="popover"] ul li {
       color: #e2e8f0 !important;
-      font-size: 0.88rem !important;
-      padding: 0.75rem 1.05rem !important;
+      font-size: 1.02rem !important;
+      font-weight: 500 !important;
+      padding: 0.85rem 1.15rem !important;
       transition: all 0.24s ease;
       border-radius: 10px;
       margin: 0.18rem 0.2rem;
@@ -1113,6 +1133,9 @@ st.markdown(flat_html("""
         rgba(236, 72, 153, 0.18) 100%) !important;
       border: 1.5px solid rgba(251, 191, 36, 0.32) !important;
       color: #fde68a !important;
+      font-size: 1.2rem !important;
+      min-width: 44px !important;
+      min-height: 50px !important;
       border-radius: 10px !important;
       transition: all 0.24s ease !important;
       box-shadow: 0 0 0 1px rgba(255,255,255,0.05) inset;
@@ -1147,14 +1170,18 @@ st.markdown(flat_html("""
       border-radius: 999px;
       box-shadow: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 10px rgba(251, 146, 60, 0.3);
     }
+    [data-baseweb="slider"] [role="slider"] [data-testid="stTickBar"] { display: none !important; }
+    [data-baseweb="slider"] [role="slider"] {
+      z-index: 30 !important;
+    }
     [data-baseweb="slider"] [role="slider"] > div > div {
       background: linear-gradient(135deg, #fef3c7, #f0abfc, #a5f3fc) !important;
       box-shadow:
         0 0 0 6px rgba(251, 191, 36, 0.18),
         0 0 26px rgba(168, 85, 247, 0.8),
         0 0 48px rgba(236, 72, 153, 0.4) !important;
-      width: 20px !important;
-      height: 20px !important;
+      width: 22px !important;
+      height: 22px !important;
       border: 2.5px solid #fff !important;
       transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
     }
@@ -1162,17 +1189,220 @@ st.markdown(flat_html("""
       transform: scale(1.3);
     }
     [data-testid="stSliderThumbValue"] {
-      background: linear-gradient(135deg, #fbbf24, #fb7185, #a855f7) !important;
-      background-size: 200% 200%;
-      animation: gradientShiftVibrant 4s ease infinite;
-      color: #0f0620 !important;
-      font-weight: 800 !important;
-      font-size: 0.76rem !important;
+      background:
+        linear-gradient(180deg,
+          rgba(255, 255, 255, 0.22) 0%,
+          rgba(255, 255, 255, 0) 50%,
+          rgba(0, 0, 0, 0.25) 100%),
+        linear-gradient(135deg,
+          #fbbf24 0%,
+          #f59e0b 14%,
+          #fb923c 28%,
+          #f97316 42%,
+          #fb7185 58%,
+          #ec4899 72%,
+          #c026d3 86%,
+          #a855f7 100%) !important;
+      background-color: #fb923c !important;
+      background-repeat: no-repeat, no-repeat !important;
+      background-size: 100% 100%, 360% 360% !important;
+      background-position: 0% 0%, 0% 50% !important;
+      animation: gradientShiftVibrant 6.5s ease infinite !important;
+      color: #0a0414 !important;
+      font-weight: 900 !important;
+      font-size: 0.92rem !important;
+      min-width: 66px !important;
+      max-width: none !important;
+      width: max-content !important;
+      height: 34px !important;
+      min-height: 34px !important;
+      max-height: 34px !important;
+      padding: 0 0.85rem !important;
+      margin: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      line-height: 34px !important;
+      white-space: nowrap !important;
+      box-sizing: border-box !important;
+      border: 1.5px solid rgba(255, 255, 255, 0.48) !important;
+      border-radius: 9px !important;
+      top: -2.9rem !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      translate: none !important;
+      box-shadow:
+        0 9px 20px rgba(0, 0, 0, 0.5),
+        0 0 0 1.5px rgba(10, 4, 20, 0.42),
+        0 0 20px rgba(251, 146, 60, 0.42),
+        0 0 36px rgba(168, 85, 247, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.42) !important;
+      z-index: 80 !important;
+      position: absolute !important;
+      pointer-events: none !important;
+      font-family: 'Space Grotesk', 'Poppins', sans-serif !important;
+      letter-spacing: -0.02em !important;
+      text-align: center !important;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.42) !important;
+      overflow: visible !important;
+    }
+    [data-testid="stSliderThumbValue"]::before {
+      content: '' !important;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: absolute !important;
+      left: 50% !important;
+      top: 50% !important;
+      transform: translate(-50%, -50%) !important;
+      width: calc(100% - 0.55rem) !important;
+      max-width: calc(100% - 0.55rem) !important;
+      min-width: 70% !important;
+      height: calc(100% - 0.4rem) !important;
+      max-height: calc(100% - 0.4rem) !important;
+      min-height: 78% !important;
+      background:
+        linear-gradient(180deg,
+          rgba(255, 255, 255, 0.98) 0%,
+          rgba(240, 171, 252, 0.95) 50%,
+          rgba(165, 243, 252, 0.95) 100%) !important;
+      background-color: #ffffff !important;
+      border: 2.5px solid #ffffff !important;
+      border-radius: 5px !important;
+      box-shadow:
+        0 3px 10px rgba(12, 5, 24, 0.3),
+        0 0 16px rgba(236, 72, 153, 0.25),
+        0 0 26px rgba(168, 85, 247, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+      z-index: 1 !important;
+      pointer-events: none !important;
+      overflow: visible !important;
+    }
+    [data-testid="stSliderThumbValue"] > div,
+    [data-testid="stSliderThumbValue"] > span,
+    [data-testid="stSliderThumbValue"] > label {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 100% !important;
+      height: 100% !important;
+      min-width: 0 !important;
+      min-height: 0 !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      background: transparent !important;
+      background-image: none !important;
+      background-color: transparent !important;
       border: none !important;
-      border-radius: 10px !important;
-      padding: 0.2rem 0.58rem !important;
-      top: -2.2rem !important;
-      box-shadow: 0 7px 20px rgba(251, 146, 60, 0.5);
+      box-shadow: none !important;
+      line-height: 34px !important;
+      text-align: center !important;
+      position: relative !important;
+      z-index: 5 !important;
+      color: inherit !important;
+      font-weight: inherit !important;
+      font-size: inherit !important;
+      font-family: inherit !important;
+      letter-spacing: inherit !important;
+      text-shadow: inherit !important;
+    }
+    [data-testid="stSliderThumbValue"] * {
+      position: relative !important;
+      z-index: 5 !important;
+      background: transparent !important;
+      background-color: transparent !important;
+      background-image: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      color: inherit !important;
+      font-weight: inherit !important;
+      font-size: inherit !important;
+      font-family: inherit !important;
+      line-height: inherit !important;
+      letter-spacing: inherit !important;
+      text-shadow: inherit !important;
+      width: auto !important;
+      height: auto !important;
+      min-width: 0 !important;
+      min-height: 0 !important;
+      transform: none !important;
+      translate: none !important;
+      border-radius: 0 !important;
+      text-align: center !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      display: inline !important;
+    }
+    [data-testid="stSliderThumbValue"] [role="slider"],
+    [data-testid="stSliderThumbValue"] [data-testid*="Thumb"],
+    [data-testid="stSliderThumbValue"] [data-testid*="thumb"],
+    [data-testid="stSliderThumbValue"] [data-testid*="Slider"],
+    [data-testid="stSliderThumbValue"] [data-testid*="slider"],
+    [data-testid="stSliderThumbValue"] [class*="thumb"],
+    [data-testid="stSliderThumbValue"] [class*="Thumb"],
+    [data-testid="stSliderThumbValue"] [class*="handle"],
+    [data-testid="stSliderThumbValue"] [class*="Handle"],
+    [data-testid="stSliderThumbValue"] [class*="knob"],
+    [data-testid="stSliderThumbValue"] [class*="Knob"],
+    [data-testid="stSliderThumbValue"] svg,
+    [data-testid="stSliderThumbValue"] img,
+    [data-testid="stSliderThumbValue"] canvas,
+    [data-testid="stSliderThumbValue"] button,
+    [data-testid="stSliderThumbValue"] input {
+      display: none !important;
+      visibility: hidden !important;
+      width: 0 !important;
+      height: 0 !important;
+      min-width: 0 !important;
+      min-height: 0 !important;
+      max-width: 0 !important;
+      max-height: 0 !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      position: absolute !important;
+      left: -99999px !important;
+      top: -99999px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      background: transparent !important;
+      background-image: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    [data-testid="stSliderThumbValue"]::after,
+    [data-testid="stSliderThumbValue"] > div::before,
+    [data-testid="stSliderThumbValue"] > div::after,
+    [data-testid="stSliderThumbValue"] > span::before,
+    [data-testid="stSliderThumbValue"] > span::after,
+    [data-testid="stSliderThumbValue"] > label::before,
+    [data-testid="stSliderThumbValue"] > label::after,
+    [data-testid="stSliderThumbValue"] *::before,
+    [data-testid="stSliderThumbValue"] *::after {
+      display: none !important;
+      visibility: hidden !important;
+      content: none !important;
+      background: transparent !important;
+      background-image: none !important;
+      background-color: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      min-width: 0 !important;
+      min-height: 0 !important;
+      max-width: 0 !important;
+      max-height: 0 !important;
+      opacity: 0 !important;
+      position: absolute !important;
+      left: -99999px !important;
+      top: -99999px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
     }
 
     .stNumberInput, .stSelectbox, .stSlider { margin-bottom: 0.5rem !important; }
@@ -1394,9 +1624,9 @@ st.markdown(flat_html("""
     .result-figure {
       font-family: 'Space Grotesk', 'Poppins', sans-serif;
       font-weight: 900;
-      font-size: 4.5rem;
+      font-size: 5.4rem;
       line-height: 1;
-      margin: 0 0 0.9rem 0;
+      margin: 0 0 0.95rem 0;
       letter-spacing: -0.05em;
       position: relative;
       z-index: 2;
@@ -1443,10 +1673,10 @@ st.markdown(flat_html("""
       100% { transform: scale(1); }
     }
     .result-caption {
-      font-size: 1rem;
+      font-size: 1.18rem;
       font-weight: 600;
       color: rgba(226, 232, 240, 0.96);
-      margin: 0 0 1.6rem 0;
+      margin: 0 0 1.7rem 0;
       position: relative;
       z-index: 2;
     }
@@ -1543,22 +1773,635 @@ st.markdown(flat_html("""
       transform: rotate(-10deg) scale(1.14);
     }
     .stat-k {
-      font-size: 0.64rem;
+      font-size: 0.76rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       font-weight: 800;
       color: rgba(251, 191, 36, 0.95);
-      margin-bottom: 0.28rem;
+      margin-bottom: 0.32rem;
     }
     .stat-v {
       font-family: 'Space Grotesk', 'Poppins', sans-serif;
-      font-weight: 700;
-      font-size: 1.22rem;
+      font-weight: 800;
+      font-size: 1.5rem;
       line-height: 1.14;
       background: linear-gradient(135deg, #ffffff 0%, #fef3c7 30%, #e0e7ff 60%, #ddd6fe 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    .pm-wrap {
+      position: relative;
+      z-index: 6;
+      margin-top: 1.3rem;
+      animation: pmFadeIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+    }
+    @keyframes pmFadeIn {
+      0% { opacity: 0; transform: translateY(26px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .pm-head {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 0.9rem;
+      padding-left: 0.15rem;
+    }
+    .pm-bar {
+      width: 6px;
+      height: 48px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #fbbf24 0%, #f97316 20%, #fb7185 40%, #ec4899 55%, #a855f7 72%, #6366f1 88%, #22d3ee 100%);
+      box-shadow: 0 0 24px rgba(168, 85, 247, 0.55), 0 0 12px rgba(251, 191, 36, 0.35);
+      flex-shrink: 0;
+    }
+    .pm-head-text h2 {
+      font-family: 'Space Grotesk', 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.72rem;
+      line-height: 1;
+      margin: 0 0 0.28rem 0;
+      letter-spacing: -0.038em;
+      background: linear-gradient(135deg,
+        #ffffff 0%,
+        #fef3c7 14%,
+        #fde68a 28%,
+        #f9a8d4 48%,
+        #f0abfc 62%,
+        #ddd6fe 78%,
+        #c4b5fd 90%,
+        #a5f3fc 100%);
+      background-size: 320% 320%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShiftVibrant 8s ease infinite;
+      filter: drop-shadow(0 2px 20px rgba(168, 85, 247, 0.2));
+    }
+    .pm-head-text p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: rgba(221, 214, 254, 0.9);
+      font-weight: 500;
+      letter-spacing: 0.015em;
+    }
+    .pm-single-pane {
+      position: relative;
+      border-radius: 26px;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 12% 0%, rgba(251, 191, 36, 0.18) 0%, transparent 48%),
+        radial-gradient(ellipse at 88% 100%, rgba(34, 211, 238, 0.16) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(168, 85, 247, 0.1) 0%, transparent 60%),
+        linear-gradient(160deg,
+          rgba(58, 28, 108, 0.82) 0%,
+          rgba(44, 20, 86, 0.78) 28%,
+          rgba(36, 16, 72, 0.86) 62%,
+          rgba(30, 13, 62, 0.92) 100%);
+      backdrop-filter: blur(46px) saturate(230%);
+      -webkit-backdrop-filter: blur(46px) saturate(230%);
+      border: 1.6px solid rgba(251, 191, 36, 0.12);
+      box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.62),
+        0 0 0 1.6px rgba(255, 255, 255, 0.05) inset,
+        0 0 120px rgba(99, 102, 241, 0.12),
+        0 0 80px rgba(251, 146, 60, 0.07);
+      animation: pmPaneIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+    }
+    @keyframes pmPaneIn {
+      0% { opacity: 0; transform: translateY(30px) scale(0.97); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .pm-single-pane::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 26px;
+      padding: 1.6px;
+      background: linear-gradient(135deg,
+        rgba(251, 191, 36, 0.55) 0%,
+        rgba(236, 72, 153, 0.35) 25%,
+        rgba(168, 85, 247, 0.42) 52%,
+        rgba(129, 140, 248, 0.4) 75%,
+        rgba(34, 211, 238, 0.5) 100%);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0.55;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .pm-single-pane::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2.4px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(251, 191, 36, 0.8) 15%,
+        rgba(236, 72, 153, 0.65) 35%,
+        rgba(168, 85, 247, 0.75) 55%,
+        rgba(129, 140, 248, 0.7) 75%,
+        rgba(34, 211, 238, 0.75) 88%,
+        transparent 100%
+      );
+      opacity: 1;
+      z-index: 3;
+    }
+    .pm-pane-inner {
+      position: relative;
+      z-index: 4;
+      padding: 1.5rem 1.6rem 1.4rem 1.6rem;
+    }
+    .pm-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0.95rem;
+      margin-top: 0.2rem;
+    }
+    .pm-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.95rem;
+      padding: 0.85rem 0.95rem;
+      border-radius: 16px;
+      background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.035) 0%,
+        rgba(255, 255, 255, 0.015) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .pm-step::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3.5px;
+      background: var(--step-accent, #fbbf24);
+      box-shadow: 0 0 14px var(--step-accent, #fbbf24);
+      opacity: 0.85;
+    }
+    .pm-step:hover {
+      background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.06) 0%,
+        rgba(255, 255, 255, 0.025) 100%);
+      border-color: rgba(255, 255, 255, 0.09);
+      transform: translateX(4px);
+    }
+    .pm-step-icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      background: var(--step-bg, linear-gradient(135deg, rgba(251,191,36,0.3), rgba(251,113,133,0.3)));
+      border: 1.5px solid var(--step-border, rgba(251,191,36,0.35));
+      box-shadow:
+        0 8px 22px var(--step-shadow, rgba(251,191,36,0.2)),
+        0 0 0 1.5px rgba(255,255,255,0.06) inset;
+      position: relative;
+    }
+    .pm-step-icon::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 14px;
+      padding: 1.5px;
+      background: var(--step-border-grad, linear-gradient(135deg, #fbbf24, #ec4899));
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0.55;
+    }
+    .pm-step-body { flex: 1; min-width: 0; }
+    .pm-step-label {
+      display: flex;
+      align-items: baseline;
+      gap: 0.55rem;
+      margin-bottom: 0.25rem;
+    }
+    .pm-step-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 0.72rem;
+      padding: 0.12rem 0.48rem;
+      border-radius: 999px;
+      background: var(--step-pill-bg, rgba(251,191,36,0.18));
+      color: var(--step-pill-text, #fde68a);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      border: 1px solid var(--step-pill-border, rgba(251,191,36,0.3));
+    }
+    .pm-step-title {
+      font-family: 'Space Grotesk', 'Poppins', sans-serif;
+      font-weight: 750;
+      font-size: 0.94rem;
+      line-height: 1.15;
+      margin: 0;
+      background: var(--step-title-grad, linear-gradient(135deg, #fef3c7, #fde68a, #f9a8d4));
+      background-size: 220% 220%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShiftVibrant 9s ease infinite;
+    }
+    .pm-step-text {
+      font-size: 0.8rem;
+      line-height: 1.52;
+      color: rgba(226, 232, 240, 0.93);
+      margin: 0;
+      font-weight: 450;
+    }
+    .pm-step-text strong {
+      color: var(--step-strong, #fde68a);
+      font-weight: 720;
+    }
+    .pm-section-gap { margin-top: 1.1rem; }
+    .pm-inputs-pane {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 88% 0%, rgba(236, 72, 153, 0.15) 0%, transparent 48%),
+        radial-gradient(ellipse at 12% 100%, rgba(34, 211, 238, 0.13) 0%, transparent 50%),
+        linear-gradient(160deg,
+          rgba(46, 22, 88, 0.8) 0%,
+          rgba(36, 16, 72, 0.78) 32%,
+          rgba(28, 12, 58, 0.86) 66%,
+          rgba(24, 10, 50, 0.92) 100%);
+      backdrop-filter: blur(44px) saturate(225%);
+      -webkit-backdrop-filter: blur(44px) saturate(225%);
+      border: 1.5px solid rgba(168, 85, 247, 0.12);
+      box-shadow:
+        0 26px 72px rgba(0, 0, 0, 0.58),
+        0 0 0 1.5px rgba(255, 255, 255, 0.05) inset,
+        0 0 100px rgba(168, 85, 247, 0.1),
+        0 0 60px rgba(236, 72, 153, 0.06);
+      animation: pmPaneIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.38s both;
+    }
+    .pm-inputs-pane::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      padding: 1.5px;
+      background: linear-gradient(135deg,
+        rgba(236, 72, 153, 0.52) 0%,
+        rgba(168, 85, 247, 0.38) 30%,
+        rgba(99, 102, 241, 0.42) 58%,
+        rgba(59, 130, 246, 0.38) 80%,
+        rgba(34, 211, 238, 0.48) 100%);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0.55;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .pm-inputs-pane::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2.2px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(236, 72, 153, 0.75) 15%,
+        rgba(168, 85, 247, 0.7) 40%,
+        rgba(99, 102, 241, 0.72) 62%,
+        rgba(34, 211, 238, 0.7) 85%,
+        transparent 100%
+      );
+      opacity: 1;
+      z-index: 3;
+    }
+    .pm-inputs-inner {
+      position: relative;
+      z-index: 4;
+      padding: 1.25rem 1.5rem 1.3rem 1.5rem;
+    }
+    .pm-inputs-head {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 0.9rem;
+    }
+    .pm-inputs-icon {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      background: linear-gradient(135deg, rgba(236,72,153,0.3), rgba(99,102,241,0.3));
+      border: 1.3px solid rgba(236,72,153,0.35);
+      box-shadow: 0 7px 20px rgba(168,85,247,0.32), 0 0 0 1.3px rgba(255,255,255,0.07) inset;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .pm-inputs-icon::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 12px;
+      padding: 1.3px;
+      background: linear-gradient(135deg,#ec4899,#a855f7,#6366f1);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      opacity: 0.55;
+    }
+    .pm-inputs-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1.08rem;
+      line-height: 1;
+      margin: 0 0 0.18rem 0;
+      background: linear-gradient(135deg,#fce7f3,#f9a8d4,#f0abfc,#ddd6fe,#c4b5fd);
+      background-size: 240% 240%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShiftVibrant 9s ease infinite;
+    }
+    .pm-inputs-sub {
+      margin: 0;
+      font-size: 0.72rem;
+      color: rgba(221, 214, 254, 0.85);
+      font-weight: 500;
+    }
+    .pm-inputs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.55rem 0.8rem;
+    }
+    .pm-input-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.52rem 0.75rem;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.015));
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: all 0.35s ease;
+    }
+    .pm-input-row:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.065), rgba(255,255,255,0.025));
+      border-color: rgba(236, 72, 153, 0.18);
+      transform: translateY(-1.5px);
+    }
+    .pm-input-k {
+      font-size: 0.68rem;
+      color: rgba(226, 232, 240, 0.78);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      text-transform: capitalize;
+    }
+    .pm-input-v {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 750;
+      font-size: 0.76rem;
+      color: #f9a8d4;
+      background: linear-gradient(135deg, #fde68a, #f9a8d4, #a5f3fc);
+      background-size: 200% 200%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShiftVibrant 8s ease infinite;
+      white-space: nowrap;
+    }
+
+    .pm-conclusion-pane {
+      position: relative;
+      border-radius: 26px;
+      overflow: hidden;
+      margin-top: 1.1rem;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(251, 191, 36, 0.2) 0%, transparent 55%),
+        radial-gradient(ellipse at 0% 100%, rgba(236, 72, 153, 0.16) 0%, transparent 50%),
+        radial-gradient(ellipse at 100% 100%, rgba(34, 211, 238, 0.16) 0%, transparent 50%),
+        linear-gradient(160deg,
+          rgba(58, 28, 108, 0.86) 0%,
+          rgba(44, 20, 86, 0.82) 30%,
+          rgba(36, 16, 72, 0.9) 65%,
+          rgba(30, 13, 62, 0.94) 100%);
+      backdrop-filter: blur(48px) saturate(240%);
+      -webkit-backdrop-filter: blur(48px) saturate(240%);
+      border: 1.8px solid rgba(251, 191, 36, 0.14);
+      box-shadow:
+        0 32px 88px rgba(0, 0, 0, 0.65),
+        0 0 0 1.8px rgba(255, 255, 255, 0.055) inset,
+        0 0 140px rgba(251, 191, 36, 0.08),
+        0 0 90px rgba(236, 72, 153, 0.07);
+      animation: pmPaneIn 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.48s both;
+    }
+    .pm-conclusion-pane::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 26px;
+      padding: 1.8px;
+      background: linear-gradient(135deg,
+        rgba(251, 191, 36, 0.62) 0%,
+        rgba(245, 158, 11, 0.48) 18%,
+        rgba(236, 72, 153, 0.4) 38%,
+        rgba(168, 85, 247, 0.46) 58%,
+        rgba(99, 102, 241, 0.44) 78%,
+        rgba(34, 211, 238, 0.56) 100%);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .pm-conclusion-pane::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2.6px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(251, 191, 36, 0.88) 12%,
+        rgba(245, 158, 11, 0.78) 28%,
+        rgba(236, 72, 153, 0.72) 46%,
+        rgba(168, 85, 247, 0.78) 62%,
+        rgba(99, 102, 241, 0.75) 80%,
+        rgba(34, 211, 238, 0.8) 90%,
+        transparent 100%
+      );
+      opacity: 1;
+      z-index: 3;
+    }
+    .pm-conclusion-inner {
+      position: relative;
+      z-index: 4;
+      padding: 1.45rem 1.6rem 1.4rem 1.6rem;
+    }
+    .pm-conc-head {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .pm-conc-icon-big {
+      width: 54px; height: 54px;
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.65rem;
+      background: var(--conc-icon-bg, linear-gradient(135deg, rgba(251,191,36,0.38), rgba(236,72,153,0.32)));
+      border: 1.8px solid var(--conc-icon-border, rgba(251,191,36,0.45));
+      box-shadow:
+        0 12px 32px var(--conc-icon-shadow, rgba(251,191,36,0.32)),
+        0 0 0 1.8px rgba(255,255,255,0.08) inset;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .pm-conc-icon-big::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 16px;
+      padding: 1.8px;
+      background: var(--conc-icon-grad, linear-gradient(135deg,#fbbf24,#ec4899,#a855f7));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude;
+      opacity: 0.6;
+    }
+    .pm-conc-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1.55rem;
+      line-height: 1;
+      margin: 0 0 0.22rem 0;
+      letter-spacing: -0.035em;
+      background: var(--conc-title-grad, linear-gradient(135deg,#ffffff,#fef3c7,#fde68a,#f9a8d4,#f0abfc,#a5f3fc));
+      background-size: 320% 320%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShiftVibrant 8s ease infinite;
+      filter: drop-shadow(0 2px 22px rgba(168,85,247,0.22));
+    }
+    .pm-conc-sub {
+      margin: 0;
+      font-size: 0.82rem;
+      color: rgba(221, 214, 254, 0.88);
+      font-weight: 500;
+    }
+    .pm-verdict-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0.95rem 0.5rem 0.65rem;
+      border-radius: 999px;
+      background: var(--conc-badge-bg, linear-gradient(135deg, rgba(251,191,36,0.22), rgba(236,72,153,0.2)));
+      border: 1.3px solid var(--conc-badge-border, rgba(251,191,36,0.4));
+      box-shadow: 0 6px 20px var(--conc-badge-shadow, rgba(251,191,36,0.2));
+      margin-bottom: 0.85rem;
+    }
+    .pm-verdict-dot {
+      width: 10px; height: 10px;
+      border-radius: 999px;
+      background: var(--conc-dot-grad, linear-gradient(135deg,#fbbf24,#ec4899));
+      box-shadow: 0 0 12px var(--conc-dot-glow, rgba(251,191,36,0.7));
+      animation: concPulse 1.8s ease-in-out infinite;
+    }
+    @keyframes concPulse {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.25); opacity: 0.78; }
+    }
+    .pm-verdict-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 0.9rem;
+      letter-spacing: 0.01em;
+      color: var(--conc-verdict-text, #fde68a);
+      text-transform: uppercase;
+    }
+    .pm-conc-body {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 1rem;
+    }
+    .pm-conc-block {
+      padding: 0.85rem 1rem;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015));
+      border: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+    .pm-conc-block::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3.5px;
+      background: var(--conc-block-accent, #fbbf24);
+      box-shadow: 0 0 14px var(--conc-block-accent, #fbbf24);
+      opacity: 0.85;
+    }
+    .pm-conc-block h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 780;
+      font-size: 0.9rem;
+      line-height: 1.1;
+      margin: 0 0 0.4rem 0;
+      padding-left: 0.3rem;
+      background: var(--conc-block-title-grad, linear-gradient(135deg,#fef3c7,#fde68a,#f9a8d4));
+      background-size: 220% 220%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShiftVibrant 9s ease infinite;
+    }
+    .pm-conc-block p {
+      margin: 0;
+      padding-left: 0.3rem;
+      font-size: 0.8rem;
+      line-height: 1.58;
+      color: rgba(226, 232, 240, 0.94);
+      font-weight: 450;
+    }
+    .pm-conc-block p strong {
+      color: var(--conc-block-strong, #fde68a);
+      font-weight: 720;
+    }
+    .pm-quick-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      margin-top: 0.4rem;
+    }
+    .pm-mini-stat {
+      padding: 0.45rem 0.65rem;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(251,191,36,0.1), rgba(236,72,153,0.08));
+      border: 1px solid rgba(251,191,36,0.16);
+    }
+    .pm-mini-k {
+      font-size: 0.6rem;
+      color: rgba(226, 232, 240, 0.72);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin: 0 0 0.1rem 0;
+    }
+    .pm-mini-v {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 0.88rem;
+      margin: 0;
+      background: linear-gradient(135deg,#fde68a,#f9a8d4,#a5f3fc);
+      background-size: 220% 220%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShiftVibrant 8s ease infinite;
     }
 
     .streamlit-expanderHeader {
@@ -2066,30 +2909,306 @@ if submitted:
                 "Consider adjusting pricing, marketing spend, or volume targets."
             )
 
-        with st.expander("💡  What does this mean for a Product Manager?"):
-            st.markdown(
-                f"""
-                Based on the inputs provided, this product is expected to generate
-                approximately **${prediction:,.0f}** in profit during its first year on the market.
+        margin_pct = (unit_margin / unit_selling_price) * 100 if unit_selling_price > 0 else 0
+        break_even_units = upfront / unit_margin if unit_margin > 0 else float('inf')
+        break_even_pct = (break_even_units / first_year_units_sold) * 100 if first_year_units_sold > 0 else 0
+        roi_pct = (prediction / upfront) * 100 if upfront > 0 else 0
+        dev_pct = (development_cost / upfront) * 100 if upfront > 0 else 0
+        mkt_pct = (launch_marketing_spend / upfront) * 100 if upfront > 0 else 0
+        payback_months = (upfront / (margin_x_units / 12)) if margin_x_units > 0 else float('inf')
+        payback_text = f" 💰 You get all your pocket money back in ~{payback_months:.1f} months" if payback_months != float('inf') and payback_months > 0 else ""
 
-                - **Unit margin** (selling price − production cost): **${unit_margin:,.2f} per unit**
-                - **Total contribution from sales volume** (margin × units sold): **${margin_x_units:,.0f}**
-                - Upfront investment (development + marketing): **${upfront:,.0f}**
+        pricing_tone = "healthy" if margin_pct >= 40 else ("solid" if margin_pct >= 25 else "tight")
+        pricing_icon = "💎" if margin_pct >= 40 else ("💰" if margin_pct >= 25 else "⚖️")
+        roi_icon = "📈" if roi_pct >= 50 else ("✅" if roi_pct >= 15 else ("⚠️" if roi_pct >= 0 else "🚨"))
+        roi_tone = "exceptional" if roi_pct >= 100 else ("strong" if roi_pct >= 50 else ("positive" if roi_pct >= 15 else ("marginal" if roi_pct >= 0 else "negative")))
+        gtm_icon = "🎯" if mkt_pct >= 40 else ("🛠️" if dev_pct >= 60 else "⚡")
+        vol_icon = "📦" if break_even_pct <= 50 else ("🎯" if break_even_pct <= 80 else "🔴")
+        roi_article = "an" if roi_tone[0].lower() in "aeiou" else "a"
 
-                A manager can use this estimate to compare **different pricing, marketing, or
-                distribution scenarios** before committing to a launch plan — for example,
-                testing whether a higher marketing spend or wider distribution coverage
-                would be justified by the resulting profit uplift.
+        step1_simple = (
+            f"Imagine you sell lemonade for <strong>${unit_selling_price:.2f}</strong> a cup. "
+            f"It costs you <strong>${unit_production_cost:,.2f}</strong> to make each cup. "
+            f"So every time you sell one, you put <strong>${unit_margin:,.2f}</strong> "
+            f"(that's <strong>{margin_pct:.1f}%</strong>) in your piggy bank. "
+            f"That's a <strong>{pricing_tone}</strong> deal! "
+            f"If people love your lemonade, charging a tiny bit more (like <strong>5–10%</strong>) means you fill your piggy bank much faster."
+        )
+        gtm_simple = (
+            f"You're taking <strong>${upfront:,.0f}</strong> from your big savings jar to start this. "
+            f"<strong>{dev_pct:.0f}%</strong> goes to making the product great (building the lemonade stand, squeezing the lemons), "
+            f"and <strong>{mkt_pct:.0f}%</strong> goes to telling people about it (making signs, yelling 'fresh lemonade!'). "
+            + (f"Since you're spending a lot on signs, first make sure people actually stop to buy before you make all the signs." if mkt_pct > dev_pct else f"Since you're spending a lot on building, make sure you know exactly what your stand needs — don't build a fancy slide if people just want lemonade!")
+        )
+        volume_simple = (
+            f"You need to sell <strong>{break_even_units:,.0f}</strong> cups of lemonade before your piggy bank has all the money back that you took from savings. "
+            f"That's <strong>{break_even_pct:.1f}%</strong> of all the cups you hope to sell in the first year. "
+            + (f"Great news — that's not very many! Even if fewer people come than you hope, you'll still get your money back." if break_even_pct <= 50 else
+              (f"That's a reasonable number. Watch the first few months closely — if lots of people come right away, you're golden." if break_even_pct <= 80 else
+               f"Whoa, that's a lot of cups! You might need to go to more streets (that's <strong>{distribution_coverage * 100:.0f}%</strong> distribution coverage) or make your lemonade extra special so more people buy."))
+        )
+        roi_simple = (
+            f"After one year, you'll have <strong>{roi_pct:+.1f}%</strong> more money in your piggy bank than what you started with — "
+            f"that's <strong>{roi_tone}</strong>!{payback_text}. "
+            + (f"🎉 DO IT! You'll make way more money than you spend. Start building the stand and keep checking your piggy bank every 3 months." if roi_pct >= 30 else
+              (f"🤔 Maybe do it! First double-check your math — what if 15% fewer people come? Or what if they love it and 15% more come? Then decide." if roi_pct >= 0 else
+               f"🚫 Wait! Don't do it yet. Try making the cups cheaper to make, charging a bit more per cup, or building a smaller stand first. Then try the math again."))
+        )
 
-                *Note: this is a statistical estimate based on historical launches with
-                similar characteristics, not a guarantee of actual performance.*
-                """
-            )
+        pm_insights_html = flat_html(f"""
+            <div class="pm-wrap">
+              <div class="pm-head">
+                <div class="pm-bar"></div>
+                <div class="pm-head-text">
+                  <h2>What This Means for Product Managers</h2>
+                  <p>Your launch forecast, explained in 4 simple steps · no jargon, promise</p>
+                </div>
+              </div>
+              <div class="pm-single-pane">
+                <div class="pm-pane-inner">
+                  <div class="pm-steps">
 
-        with st.expander("🔍  See the exact inputs sent to the model"):
-            display_df = input_df.T.rename(columns={0: "Value"})
-            display_df["Value"] = display_df["Value"].astype(str)
-            st.dataframe(display_df, width="stretch")
+                    <div class="pm-step" style="--step-accent:#fbbf24; --step-bg:linear-gradient(135deg,rgba(251,191,36,0.32),rgba(251,113,133,0.28)); --step-border:rgba(251,191,36,0.38); --step-shadow:rgba(251,191,36,0.22); --step-border-grad:linear-gradient(135deg,#fbbf24,#ec4899); --step-pill-bg:rgba(251,191,36,0.18); --step-pill-text:#fde68a; --step-pill-border:rgba(251,191,36,0.32); --step-title-grad:linear-gradient(135deg,#fef3c7,#fde68a,#f9a8d4); --step-strong:#fde68a;">
+                      <div class="pm-step-icon">{pricing_icon}</div>
+                      <div class="pm-step-body">
+                        <div class="pm-step-label">
+                          <span class="pm-step-num">STEP 1</span>
+                          <h3 class="pm-step-title">How much you earn on every sale</h3>
+                        </div>
+                        <p class="pm-step-text">{step1_simple}</p>
+                      </div>
+                    </div>
+
+                    <div class="pm-step" style="--step-accent:#ec4899; --step-bg:linear-gradient(135deg,rgba(236,72,153,0.3),rgba(168,85,247,0.28)); --step-border:rgba(236,72,153,0.36); --step-shadow:rgba(236,72,153,0.2); --step-border-grad:linear-gradient(135deg,#ec4899,#a855f7); --step-pill-bg:rgba(236,72,153,0.17); --step-pill-text:#f9a8d4; --step-pill-border:rgba(236,72,153,0.3); --step-title-grad:linear-gradient(135deg,#fce7f3,#f9a8d4,#f0abfc); --step-strong:#f9a8d4;">
+                      <div class="pm-step-icon">{gtm_icon}</div>
+                      <div class="pm-step-body">
+                        <div class="pm-step-label">
+                          <span class="pm-step-num">STEP 2</span>
+                          <h3 class="pm-step-title">Where your startup money goes</h3>
+                        </div>
+                        <p class="pm-step-text">{gtm_simple}</p>
+                      </div>
+                    </div>
+
+                    <div class="pm-step" style="--step-accent:#a855f7; --step-bg:linear-gradient(135deg,rgba(168,85,247,0.3),rgba(99,102,241,0.28)); --step-border:rgba(168,85,247,0.36); --step-shadow:rgba(168,85,247,0.22); --step-border-grad:linear-gradient(135deg,#a855f7,#6366f1); --step-pill-bg:rgba(168,85,247,0.17); --step-pill-text:#ddd6fe; --step-pill-border:rgba(168,85,247,0.3); --step-title-grad:linear-gradient(135deg,#ede9fe,#ddd6fe,#c4b5fd); --step-strong:#ddd6fe;">
+                      <div class="pm-step-icon">{vol_icon}</div>
+                      <div class="pm-step-body">
+                        <div class="pm-step-label">
+                          <span class="pm-step-num">STEP 3</span>
+                          <h3 class="pm-step-title">How many sales until you win</h3>
+                        </div>
+                        <p class="pm-step-text">{volume_simple}</p>
+                      </div>
+                    </div>
+
+                    <div class="pm-step" style="--step-accent:#22d3ee; --step-bg:linear-gradient(135deg,rgba(34,211,238,0.3),rgba(59,130,246,0.28)); --step-border:rgba(34,211,238,0.36); --step-shadow:rgba(34,211,238,0.22); --step-border-grad:linear-gradient(135deg,#22d3ee,#3b82f6); --step-pill-bg:rgba(34,211,238,0.17); --step-pill-text:#a5f3fc; --step-pill-border:rgba(34,211,238,0.3); --step-title-grad:linear-gradient(135deg,#cffafe,#a5f3fc,#7dd3fc); --step-strong:#a5f3fc;">
+                      <div class="pm-step-icon">{roi_icon}</div>
+                      <div class="pm-step-body">
+                        <div class="pm-step-label">
+                          <span class="pm-step-num">STEP 4</span>
+                          <h3 class="pm-step-title">The big question: Should you do it?</h3>
+                        </div>
+                        <p class="pm-step-text">{roi_simple}</p>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+        """)
+        st.markdown(pm_insights_html, unsafe_allow_html=True)
+
+        inputs_html = flat_html(f"""
+            <div class="pm-section-gap"></div>
+            <div class="pm-inputs-pane">
+              <div class="pm-inputs-inner">
+                <div class="pm-inputs-head">
+                  <div class="pm-inputs-icon">🔍</div>
+                  <div>
+                    <h3 class="pm-inputs-title">Exact Inputs Sent to the Model</h3>
+                    <p class="pm-inputs-sub">8 features the AI used to calculate your forecast</p>
+                  </div>
+                </div>
+                <div class="pm-inputs-grid">
+                  <div class="pm-input-row">
+                    <span class="pm-input-k">Development Cost</span>
+                    <span class="pm-input-v">${development_cost:,.0f}</span>
+                  </div>
+                  <div class="pm-input-row">
+                    <span class="pm-input-k">Launch Marketing</span>
+                    <span class="pm-input-v">${launch_marketing_spend:,.0f}</span>
+                  </div>
+                  <div class="pm-input-row">
+                    <span class="pm-input-k">Unit Margin</span>
+                    <span class="pm-input-v">${unit_margin:,.2f}</span>
+                  </div>
+                  <div class="pm-input-row">
+                    <span class="pm-input-k">Margin × Units</span>
+                    <span class="pm-input-v">${margin_x_units:,.0f}</span>
+                  </div>
+                  <div class="pm-input-row">
+                    <span class="pm-input-k">Distribution Coverage</span>
+                    <span class="pm-input-v">{distribution_coverage * 100:.0f}%</span>
+                  </div>
+                  <div class="pm-input-row">
+                    <span class="pm-input-k">Customer Rating</span>
+                    <span class="pm-input-v">{customer_rating:.1f} / 5.0</span>
+                  </div>
+                  <div class="pm-input-row">
+                    <span class="pm-input-k">Product Category</span>
+                    <span class="pm-input-v">{product_category}</span>
+                  </div>
+                  <div class="pm-input-row">
+                    <span class="pm-input-k">Launch Region</span>
+                    <span class="pm-input-v">{launch_region}</span>
+                  </div>
+                  <div class="pm-input-row">
+                    <span class="pm-input-k">Upfront Total</span>
+                    <span class="pm-input-v">${upfront:,.0f}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+        """)
+        st.markdown(inputs_html, unsafe_allow_html=True)
+
+        if roi_pct >= 50:
+            conc_verdict = "🚀 GO FOR LAUNCH"
+            conc_verdict_text = "Green Light · Exceptional Profile"
+            conc_icon = "🚀"
+            conc_style = """
+              --conc-icon-bg:linear-gradient(135deg,rgba(34,211,238,0.38),rgba(16,185,129,0.32));
+              --conc-icon-border:rgba(34,211,238,0.45);
+              --conc-icon-shadow:rgba(34,211,238,0.34);
+              --conc-icon-grad:linear-gradient(135deg,#22d3ee,#10b981,#a855f7);
+              --conc-title-grad:linear-gradient(135deg,#ffffff,#cffafe,#a5f3fc,#6ee7b7,#bbf7d0,#ddd6fe);
+              --conc-badge-bg:linear-gradient(135deg,rgba(16,185,129,0.24),rgba(34,211,238,0.22));
+              --conc-badge-border:rgba(16,185,129,0.45);
+              --conc-badge-shadow:rgba(16,185,129,0.25);
+              --conc-dot-grad:linear-gradient(135deg,#10b981,#22d3ee);
+              --conc-dot-glow:rgba(16,185,129,0.75);
+              --conc-verdict-text:#6ee7b7;
+              --conc-block-accent:#10b981;
+              --conc-block-title-grad:linear-gradient(135deg,#d1fae5,#6ee7b7,#a5f3fc);
+              --conc-block-strong:#6ee7b7;
+            """
+            conc_summary = f"The math is overwhelmingly positive — a <strong>{roi_pct:+.0f}%</strong> Year-1 return with payback in ~{payback_months:.0f} months sits well above the cost of capital. Gross margin at <strong>{margin_pct:.0f}%</strong> means each sale compounds quickly, and the break-even volume of <strong>{break_even_units:,.0f}</strong> units is comfortably within reach."
+            conc_rec = f"<strong>Move to launch readiness immediately.</strong> Lock MVP scope to hit the <strong>{dev_pct:.0f}%</strong> R&D budget, then phase the <strong>{mkt_pct:.0f}%</strong> marketing spend in waves after the first cohort validates demand. Set up quarterly tracking against the <strong>{first_year_units_sold:,.0f}</strong> unit forecast and revisit pricing if distribution exceeds <strong>{distribution_coverage * 100:.0f}%</strong>."
+        elif roi_pct >= 15:
+            conc_verdict = "✅ CONDITIONAL GO"
+            conc_verdict_text = "Strong Profile · Sensitivity Check"
+            conc_icon = "✅"
+            conc_style = """
+              --conc-icon-bg:linear-gradient(135deg,rgba(168,85,247,0.38),rgba(99,102,241,0.32));
+              --conc-icon-border:rgba(168,85,247,0.45);
+              --conc-icon-shadow:rgba(168,85,247,0.34);
+              --conc-icon-grad:linear-gradient(135deg,#a855f7,#6366f1,#22d3ee);
+              --conc-title-grad:linear-gradient(135deg,#ffffff,#ede9fe,#ddd6fe,#c4b5fd,#a5f3fc);
+              --conc-badge-bg:linear-gradient(135deg,rgba(168,85,247,0.24),rgba(99,102,241,0.22));
+              --conc-badge-border:rgba(168,85,247,0.45);
+              --conc-badge-shadow:rgba(168,85,247,0.25);
+              --conc-dot-grad:linear-gradient(135deg,#a855f7,#6366f1);
+              --conc-dot-glow:rgba(168,85,247,0.75);
+              --conc-verdict-text:#ddd6fe;
+              --conc-block-accent:#a855f7;
+              --conc-block-title-grad:linear-gradient(135deg,#ede9fe,#ddd6fe,#c4b5fd);
+              --conc-block-strong:#ddd6fe;
+            """
+            conc_summary = f"Returns are solid at <strong>{roi_pct:+.0f}%</strong> ROI with payback in ~{payback_months:.0f} months, but there's not enough buffer to be careless. Break-even at <strong>{break_even_pct:.0f}%</strong> of Year-1 volume leaves room, yet a material miss on demand or a cost overrun could flip the result."
+            conc_rec = f"<strong>Approve with two quick guardrails:</strong> First, run sensitivity on <strong>±15% volume</strong> and <strong>±0.3 rating</strong> to confirm downside stays above water. Second, hold <strong>20–25%</strong> of marketing spend in reserve until the first 60 days of real sales data lands. Keep the <strong>{margin_pct:.0f}%</strong> gross margin target locked — don't dilute it for distribution."
+        elif roi_pct >= 0:
+            conc_verdict = "⚠️ HOLD — ITERATE FIRST"
+            conc_verdict_text = "Marginal · Needs Optimization"
+            conc_icon = "⚠️"
+            conc_style = """
+              --conc-icon-bg:linear-gradient(135deg,rgba(251,191,36,0.38),rgba(245,158,11,0.32));
+              --conc-icon-border:rgba(251,191,36,0.45);
+              --conc-icon-shadow:rgba(251,191,36,0.34);
+              --conc-icon-grad:linear-gradient(135deg,#fbbf24,#f59e0b,#ec4899);
+              --conc-title-grad:linear-gradient(135deg,#ffffff,#fef3c7,#fde68a,#fcd34d,#f9a8d4);
+              --conc-badge-bg:linear-gradient(135deg,rgba(251,191,36,0.25),rgba(245,158,11,0.22));
+              --conc-badge-border:rgba(251,191,36,0.45);
+              --conc-badge-shadow:rgba(251,191,36,0.26);
+              --conc-dot-grad:linear-gradient(135deg,#fbbf24,#f59e0b);
+              --conc-dot-glow:rgba(251,191,36,0.75);
+              --conc-verdict-text:#fde68a;
+              --conc-block-accent:#fbbf24;
+              --conc-block-title-grad:linear-gradient(135deg,#fef3c7,#fde68a,#fcd34d);
+              --conc-block-strong:#fde68a;
+            """
+            conc_summary = f"Returns are positive at <strong>{roi_pct:+.0f}%</strong> but thin — barely covering the cost of capital. Break-even at <strong>{break_even_pct:.0f}%</strong> of forecast and a <strong>{margin_pct:.0f}%</strong> margin mean any slip on units or rating pushes you underwater."
+            conc_rec = f"<strong>Do not sign off yet — rework the plan on at least two of these levers:</strong> (1) Trim unit production cost to push margin up <strong>5–8 pts</strong>. (2) Reposition for a <strong>5–10% higher price</strong> if category allows. (3) Narrow launch scope — cut <strong>15–20%</strong> of upfront spend (either delay features or reduce marketing). Then re-run the model."
+        else:
+            conc_verdict = "🚫 STOP — DO NOT LAUNCH"
+            conc_verdict_text = "Loss Projected · Rework Required"
+            conc_icon = "🚫"
+            conc_style = """
+              --conc-icon-bg:linear-gradient(135deg,rgba(239,68,68,0.38),rgba(236,72,153,0.32));
+              --conc-icon-border:rgba(239,68,68,0.45);
+              --conc-icon-shadow:rgba(239,68,68,0.34);
+              --conc-icon-grad:linear-gradient(135deg,#ef4444,#ec4899,#f59e0b);
+              --conc-title-grad:linear-gradient(135deg,#ffffff,#fee2e2,#fecaca,#f9a8d4,#fde68a);
+              --conc-badge-bg:linear-gradient(135deg,rgba(239,68,68,0.25),rgba(236,72,153,0.22));
+              --conc-badge-border:rgba(239,68,68,0.45);
+              --conc-badge-shadow:rgba(239,68,68,0.26);
+              --conc-dot-grad:linear-gradient(135deg,#ef4444,#ec4899);
+              --conc-dot-glow:rgba(239,68,68,0.75);
+              --conc-verdict-text:#fecaca;
+              --conc-block-accent:#ef4444;
+              --conc-block-title-grad:linear-gradient(135deg,#fee2e2,#fecaca,#f9a8d4);
+              --conc-block-strong:#fecaca;
+            """
+            conc_summary = f"The model predicts a <strong>{roi_pct:+.0f}%</strong> first-year loss — spending more than you'll earn back. At <strong>{margin_pct:.0f}%</strong> margin and break-even at <strong>{break_even_pct:.0f}%</strong> of the forecast, the economics simply don't close under realistic demand."
+            conc_rec = f"<strong>Hard stop — go back and rebuild at least three levers at once:</strong> <strong>(a)</strong> Can production cost drop enough to push gross margin above <strong>25%</strong>? <strong>(b)</strong> Can price rise <strong>10–15%</strong> without killing units? <strong>(c)</strong> Can upfront spend drop by <strong>25%+</strong> with a narrower scope? <strong>(d)</strong> Is there a higher-confidence region or category with better rating support? Only re-submit after the model crosses into positive ROI territory."
+
+        payback_display = f"~{payback_months:.0f} mo" if payback_months != float('inf') and payback_months > 0 else "N/A"
+        conclusion_html = flat_html(f"""
+            <div class="pm-conclusion-pane" style="{conc_style}">
+              <div class="pm-conclusion-inner">
+                <div class="pm-conc-head">
+                  <div class="pm-conc-icon-big">{conc_icon}</div>
+                  <div>
+                    <h2 class="pm-conc-title">Final Verdict &amp; Recommendation</h2>
+                    <p class="pm-conc-sub">Based on all 8 model inputs · machine + human synthesis</p>
+                  </div>
+                </div>
+                <div class="pm-verdict-badge">
+                  <span class="pm-verdict-dot"></span>
+                  <span class="pm-verdict-text">{conc_verdict} · {conc_verdict_text}</span>
+                </div>
+                <div class="pm-conc-body">
+                  <div class="pm-conc-block">
+                    <h4>🧠 What the numbers say</h4>
+                    <p>{conc_summary}</p>
+                    <div class="pm-quick-stats">
+                      <div class="pm-mini-stat">
+                        <p class="pm-mini-k">1st-Year ROI</p>
+                        <p class="pm-mini-v">{roi_pct:+.1f}%</p>
+                      </div>
+                      <div class="pm-mini-stat">
+                        <p class="pm-mini-k">Payback</p>
+                        <p class="pm-mini-v">{payback_display}</p>
+                      </div>
+                      <div class="pm-mini-stat">
+                        <p class="pm-mini-k">Gross Margin</p>
+                        <p class="pm-mini-v">{margin_pct:.1f}%</p>
+                      </div>
+                      <div class="pm-mini-stat">
+                        <p class="pm-mini-k">Break-Even</p>
+                        <p class="pm-mini-v">{break_even_units:,.0f}u</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pm-conc-block" style="--conc-block-accent:#ec4899; --conc-block-title-grad:linear-gradient(135deg,#fce7f3,#f9a8d4,#f0abfc); --conc-block-strong:#f9a8d4;">
+                    <h4>🎯 Recommended next steps</h4>
+                    <p>{conc_rec}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        """)
+        st.markdown(conclusion_html, unsafe_allow_html=True)
 
 st.markdown(flat_html("""
     <div class="foot-card">
