@@ -6,14 +6,8 @@
 
 ## Business Problem
 
-Before launching a new product, a product manager needs to estimate whether the
-planned pricing, cost structure, marketing spend, and expected demand will produce
-a profitable first year. This project builds a **linear regression model** that
-predicts `First_Year_Profit` from product, cost, pricing, and market-reach inputs,
-and wraps it in an interactive **Streamlit web app** so a manager can test different
-launch scenarios (price, marketing budget, distribution, region, category) and
-immediately see the projected profit impact — without needing to run any code
-or open a spreadsheet.
+Before launching a new product, a product manager needs to estimate whether the planned pricing, cost structure, marketing spend, and expected demand will produce a profitable first year. This project builds a **linear regression model** that predicts `First_Year_Profit` from product, cost, pricing, and market-reach inputs,and wraps it in an interactive **Streamlit web app** so a manager can test different
+launch scenarios (price, marketing budget, distribution, region, category) and immediately see the projected profit impact — without needing to run any code or open a spreadsheet.
 
 ## Project Files
 
@@ -24,7 +18,6 @@ or open a spreadsheet.
 | `model.pkl` | Saved final preprocessing/model pipeline |
 | `app.py` | Streamlit web application |
 | `README.md` | How to run the project and business problem description (this file) |
-| `data_cleaned.csv` *(extra)* | Cleaned dataset after Part A corrections, produced by the notebook and used to train `model.pkl` |
 | `requirements.txt` *(extra)* | Python dependencies |
 
 ## How to Run
@@ -50,17 +43,10 @@ This opens the app in your browser (default: `http://localhost:8501`).
 ## Using the App
 
 1. Select the **Product Category** and **Launch Region**.
-2. Enter **Development Cost**, **Marketing Spend**, **Unit Selling Price**, and
-   **Unit Production Cost**.
-3. Enter the expected **First-Year Units Sold**, **Customer Rating**, and
-   **Distribution Coverage**.
-4. Click **Predict First-Year Profit** to see the estimated profit, along with
-   a plain-language explanation of what the number means for decision-making.
-
-The app includes input validation (e.g. selling price must exceed production
-cost, ratings must be 1–5, coverage must be 0–1) so obviously invalid launch
-plans are rejected with a clear error message rather than silently producing
-a nonsensical prediction.
+2. Enter **Development Cost**, **Marketing Spend**, **Unit Selling Price**, and **Unit Production Cost**.
+3. Enter the expected **First-Year Units Sold**, **Customer Rating**, and **Distribution Coverage**.
+4. Click **Predict First-Year Profit** to see the estimated profit, along with a plain-language explanation of what the number means for decision-making.
+The app includes input validation (e.g. selling price must exceed production cost, ratings must be 1–5, coverage must be 0–1) so obviously invalid launch plans are rejected with a clear error message rather than silently producing a nonsensical prediction.
 
 ## Modelling Summary
 
@@ -99,7 +85,29 @@ not a placeholder/dummy model — so the coefficients and predictions reflect
 the actual cost/price/volume relationships in `data.csv`.
 
 ## Screenshots
+### App Homepage Screenshot
+![App Homepage](Screenshots/picture1.png)
+![App Homepage](Screenshots/picture2.png)
+![App Homepage](Screenshots/picture3.png)
+![App Homepage](Screenshots/picture4.png)
 
-*(Add screenshots of the running app here before submission — e.g. the input
-form and a sample prediction result.)*
+### Prediction Result Screenshot
+![Prediction Result](Screenshots/picture5.png)
+![Prediction Result](Screenshots/picture6.png)
+![Prediction Result](Screenshots/picture7.png)
+![Prediction Result](Screenshots/picture9.png)
+
+### Model Training Evaluation Metrics Screenshot
+![Model Metrics](Screenshots/picture8.png)
+![Model Metrics](Screenshots/picture2.png)
+![Model Metrics](Screenshots/picture3.png)
+![Model Metrics](Screenshots/picture4.png)
+
+### Final Conclusion and Recommendations Screenshot
+![Final Conclusion and Recommendations](Screenshots/picture9.png)  
+![Final Conclusion and Recommendations](Screenshots/picture6.png)
+![Final Conclusion and Recommendations](Screenshots/picture7.png)
+![Final Conclusion and Recommendations](Screenshots/picture9.png)
+
+
 
