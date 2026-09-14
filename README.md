@@ -86,28 +86,28 @@ the actual cost/price/volume relationships in `data.csv`.
 
 ## Screenshots
 ### App Homepage Screenshot
-![App Homepage](Screenshots/picture1.png)
-![App Homepage](Screenshots/picture2.png)
-![App Homepage](Screenshots/picture3.png)
-![App Homepage](Screenshots/picture4.png)
+![App Homepage](Screenshots/Picture1.png)
+![App Homepage](Screenshots/Picture2.png)
+![App Homepage](Screenshots/Picture3.png)
+![App Homepage](Screenshots/Picture4.png)
 
 ### Prediction Result Screenshot
-![Prediction Result](Screenshots/picture5.png)
-![Prediction Result](Screenshots/picture6.png)
-![Prediction Result](Screenshots/picture7.png)
-![Prediction Result](Screenshots/picture9.png)
+![Prediction Result](Screenshots/Picture5.png)
+![Prediction Result](Screenshots/Picture6.png)
+![Prediction Result](Screenshots/Picture7.png)
+![Prediction Result](Screenshots/Picture9.png)
 
 ### Model Training Evaluation Metrics Screenshot
-![Model Metrics](Screenshots/picture8.png)
-![Model Metrics](Screenshots/picture2.png)
-![Model Metrics](Screenshots/picture3.png)
-![Model Metrics](Screenshots/picture4.png)
+![Model Metrics](Screenshots/Picture8.png)
+![Model Metrics](Screenshots/Picture2.png)
+![Model Metrics](Screenshots/Picture3.png)
+![Model Metrics](Screenshots/Picture4.png)
 
 ### Final Conclusion and Recommendations Screenshot
-![Final Conclusion and Recommendations](Screenshots/picture9.png)  
-![Final Conclusion and Recommendations](Screenshots/picture6.png)
-![Final Conclusion and Recommendations](Screenshots/picture7.png)
-![Final Conclusion and Recommendations](Screenshots/picture9.png)
+![Final Conclusion and Recommendations](Screenshots/Picture9.png)  
+![Final Conclusion and Recommendations](Screenshots/Picture6.png)
+![Final Conclusion and Recommendations](Screenshots/Picture7.png)
+![Final Conclusion and Recommendations](Screenshots/Picture9.png) 
 
 
 
